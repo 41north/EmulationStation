@@ -119,11 +119,11 @@ void parseGamelist(SystemData* system)
 		{
 			const std::string path = Utils::FileSystem::resolveRelativePath(fileNode.child("path").text().get(), relativeTo, false);
 
-			if(!trustGamelist && !Utils::FileSystem::exists(path))
-			{
-				LOG(LogWarning) << "File \"" << path << "\" does not exist! Ignoring.";
-				continue;
-			}
+			// if(!trustGamelist && !Utils::FileSystem::exists(path))
+			// {
+			// 	LOG(LogWarning) << "File \"" << path << "\" does not exist! Ignoring.";
+			// 	continue;
+			// }
 
 			FileData* file = findOrCreateFile(system, path, type);
 			if(!file)

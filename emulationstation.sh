@@ -1,9 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
-esdir="$(dirname $0)"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 while true; do
     rm -f /tmp/es-restart /tmp/es-sysrestart /tmp/es-shutdown
-    "$esdir/emulationstation" "$@"
+    eval "$SCRIPT_DIR/emulationstation --windowed --debug --no-splash --home ${SCRIPT_DIR}/research/"
     ret=$?
     [ -f /tmp/es-restart ] && continue
     if [ -f /tmp/es-sysrestart ]; then
